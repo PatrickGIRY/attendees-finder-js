@@ -1,4 +1,5 @@
 import { describe, beforeEach, test, expect } from "vitest";
+import { findByInfixOfFirstName } from "./attendess-finder";
 
 describe("The attendees finder should return", () => {
   let attendees = [];
