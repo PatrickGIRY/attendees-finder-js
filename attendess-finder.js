@@ -1,23 +1,23 @@
 export function findByInfixOfFirstName(query, attendees) {
     const result = [];
 
-    const predicate = (attendees, query) => matches(attendees, query);
+    const predicate = matches(query);
     const append = attendee => result.push(attendee);
 
     for (const attendee of attendees) {
-        addIfMatches(predicate, attendee, query, append)(attendee);
+        addIfMatches(predicate, attendee, append)(attendee);
     }
     return result;
 }
 
-function addIfMatches(predicate, attendee, query, append) {
-    if (predicate(attendee, query)) {
+function addIfMatches(predicate, attendee, append) {
+    if (predicate(attendee)) {
         return append;
     } else {
         return () => {};
     }
 }
 
-function matches(attendee, query) {
-    return attendee.firstName.includes(query);
+function matches(query) {
+    return attendee => attendee.firstName.includes(query);
 }
