@@ -2,9 +2,13 @@ export function findByInfixOfFirstName(query, attendees) {
     const result = [];
 
     for (const attendee of attendees) {
-        if (attendee.firstName.includes(query)) {
+        if (matches(attendee, query)) {
             result.push(attendee);
         }
     }
     return result;
+}
+
+function matches(attendee, query) {
+    return attendee.firstName.includes(query);
 }
