@@ -1,5 +1,4 @@
 export function findByInfixOfFirstName(query, attendees) {
-    
     return filter(matches(query), attendees);
 }
 
